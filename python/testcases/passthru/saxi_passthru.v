@@ -13,6 +13,9 @@ module saxi_passthru(ACLK, ARESETn, TREADY_IN, TVALID_IN, TDATA_IN, TREADY_OUT, 
     reg [3:0] seq_counter;
     reg run_ready;
 
+    reg [31:0] TDATA_OUT_SIG;
+    reg TVALID_OUT_SIG;
+
     // Demo sequencer for stalls
     always @(posedge ACLK)
     begin
@@ -30,13 +33,16 @@ module saxi_passthru(ACLK, ARESETn, TREADY_IN, TVALID_IN, TDATA_IN, TREADY_OUT, 
     always @(posedge ACLK)
     begin
         if (TREADY_OUT)
-            TVALID_OUT <= 1'b0;
+            TVALID_OUT_SIG <= 1'b0;
 
         if (run_ready && TVALID_IN)
         begin
-            TDATA_OUT <= TDATA_IN;
-            TVALID_OUT <= 1'b1;
+            TDATA_OUT_SIG <= TDATA_IN;
+            TVALID_OUT_SIG <= 1'b1;
         end
     end
+
+    assign TDATA_OUT = TDATA_OUT_SIG;
+    assign TVALID_OUT = TVALID_OUT_SIG;
 
 endmodule
