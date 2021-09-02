@@ -395,6 +395,7 @@ namespace gr {
     verilog_axi_cc_impl::release_lib()
     {
       this->verilog_module_so.close_lib();
+      return 0;
     }
 
     bool
