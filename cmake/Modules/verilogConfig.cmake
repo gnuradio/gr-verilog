@@ -22,7 +22,9 @@ FIND_LIBRARY(
           /usr/local/lib64
           /usr/lib
           /usr/lib64
-)
+          )
+
+include("${CMAKE_CURRENT_LIST_DIR}/verilogTarget.cmake")
 
 INCLUDE(FindPackageHandleStandardArgs)
 FIND_PACKAGE_HANDLE_STANDARD_ARGS(VERILOG DEFAULT_MSG VERILOG_LIBRARIES VERILOG_INCLUDE_DIRS)

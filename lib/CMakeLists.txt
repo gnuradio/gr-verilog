@@ -1,4 +1,4 @@
-# Copyright 2011,2012,2016 Free Software Foundation, Inc.
+# Copyright 2011,2012,2016,2018,2019 Free Software Foundation, Inc.
 #
 # This file is part of GNU Radio
 #
@@ -28,7 +28,7 @@ link_directories(${Boost_LIBRARY_DIRS})
 list(APPEND verilog_sources
     ${CMAKE_CURRENT_BINARY_DIR}/constants.cc
     verilog_axi_ii_impl.cc
-    
+
     Shell_cmd.cpp
     Shared_lib.cpp
     verilog_axi_ff_impl.cc
@@ -39,12 +39,16 @@ list(APPEND verilog_sources
 
 set(verilog_sources "${verilog_sources}" PARENT_SCOPE)
 if(NOT verilog_sources)
-	MESSAGE(STATUS "No C++ sources... skipping lib/")
-	return()
+    MESSAGE(STATUS "No C++ sources... skipping lib/")
+    return()
 endif(NOT verilog_sources)
 
 add_library(gnuradio-verilog SHARED ${verilog_sources})
-target_link_libraries(gnuradio-verilog ${Boost_LIBRARIES} ${GNURADIO_ALL_LIBRARIES})
+target_link_libraries(gnuradio-verilog ${Boost_LIBRARIES} gnuradio::gnuradio-runtime)
+target_include_directories(gnuradio-verilog
+    PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>
+    PUBLIC $<INSTALL_INTERFACE:include>
+  )
 set_target_properties(gnuradio-verilog PROPERTIES DEFINE_SYMBOL "gnuradio_verilog_EXPORTS")
 
 if(APPLE)
@@ -60,6 +64,12 @@ include(GrMiscUtils)
 GR_LIBRARY_FOO(gnuradio-verilog RUNTIME_COMPONENT "verilog_runtime" DEVEL_COMPONENT "verilog_devel")
 
 ########################################################################
+# Print summary
+########################################################################
+message(STATUS "Using install prefix: ${CMAKE_INSTALL_PREFIX}")
+message(STATUS "Building for version: ${VERSION} / ${LIBVER}")
+
+########################################################################
 # Build and register unit test
 ########################################################################
 include(GrTest)
@@ -67,8 +77,8 @@ include(GrTest)
 include_directories(${CPPUNIT_INCLUDE_DIRS})
 
 list(APPEND test_verilog_sources
-    ${CMAKE_CURRENT_SOURCE_DIR}/test_verilog.cc
-    ${CMAKE_CURRENT_SOURCE_DIR}/qa_verilog.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/test_verilog.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/qa_verilog.cc
 )
 
 add_executable(test-verilog ${test_verilog_sources})
@@ -83,11 +93,6 @@ target_link_libraries(
 
 GR_ADD_TEST(test_verilog test-verilog)
 
-########################################################################
-# Print summary
-########################################################################
-message(STATUS "Using install prefix: ${CMAKE_INSTALL_PREFIX}")
-message(STATUS "Building for version: ${VERSION} / ${LIBVER}")
 
 ########################################################################
 # Configure templates

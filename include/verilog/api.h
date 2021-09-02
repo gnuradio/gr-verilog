@@ -25,9 +25,9 @@
 #include <gnuradio/attributes.h>
 
 #ifdef gnuradio_verilog_EXPORTS
-#  define VERILOG_API __GR_ATTR_EXPORT
+#define VERILOG_API __GR_ATTR_EXPORT
 #else
-#  define VERILOG_API __GR_ATTR_IMPORT
+#define VERILOG_API __GR_ATTR_IMPORT
 #endif
 
 #endif /* INCLUDED_VERILOG_API_H */
