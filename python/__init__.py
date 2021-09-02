@@ -22,13 +22,10 @@
 This is the GNU Radio VERILOG module. Place your Python package
 description here (python/__init__.py).
 '''
+from __future__ import unicode_literals
 
 # import swig generated symbols into the verilog namespace
-try:
-	# this might fail if the module is python-only
-	from verilog_swig import *
-except ImportError:
-	pass
+from .verilog_swig import *
 
 # import any pure python here
 #
