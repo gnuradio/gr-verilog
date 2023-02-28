@@ -355,7 +355,7 @@ namespace gr {
       cmd += std::string(" ") + "USER_CPP_FILENAME=" + CPP_TEMPLATE_NAME;
       cmd += std::string(" ") + " M_DIR=" + M_dir;
       // cmd += verilator_options:
-      cmd += std::string(" ") + "VERILATOR_OPTIONS=" + this->verilator_options;
+      cmd += std::string(" ") + "VERILATOR_OPTIONS=\"" + this->verilator_options + "\"";
       cmd += ENTER;
 
       cmd += ENTER;
