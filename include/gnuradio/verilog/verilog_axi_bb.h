@@ -22,7 +22,7 @@
 #ifndef INCLUDED_VERILOG_VERILOG_AXI_BB_H
 #define INCLUDED_VERILOG_VERILOG_AXI_BB_H
 
-#include <verilog/api.h>
+#include <gnuradio/verilog/api.h>
 #include <gnuradio/block.h>
 
 namespace gr {

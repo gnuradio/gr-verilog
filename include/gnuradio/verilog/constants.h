@@ -22,7 +22,7 @@
 #ifndef INCLUDED_GR_VERILOG_CONSTANTS_H
 #define INCLUDED_GR_VERILOG_CONSTANTS_H
 
-#include <verilog/api.h>
+#include <gnuradio/verilog/api.h>
 #include <string>
 
 namespace gr {

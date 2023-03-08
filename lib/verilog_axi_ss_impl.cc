@@ -30,10 +30,10 @@
 #include <cmath>
 
 
-#include "verilog/constants.h"
+#include "gnuradio/verilog/constants.h"
 
-#include "verilog/Shell_cmd.h"
-#include "verilog/Shared_lib.h"
+#include "gnuradio/verilog/Shell_cmd.h"
+#include "gnuradio/verilog/Shared_lib.h"
 
 #define AXI_MODULE_CL_MAKEFILE "axi_module_cl.mk"
 #define CPP_TEMPLATE_NAME "axi_module.cpp"

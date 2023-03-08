@@ -23,7 +23,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include "verilog/Shell_cmd.h"
+#include "gnuradio/verilog/Shell_cmd.h"
 
 #define BUFFER_SIZE 1024
 #define _EXIT_FAILURE -1
