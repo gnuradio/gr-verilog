@@ -16,7 +16,7 @@ First you need to install the dependencies (see below).
 
 Then, you need to download this repository
 ```bash
-$ git clone https://github.com/B0WEN-HU/gr-verilog.git
+$ git clone https://github.com/gnuradio/gr-verilog.git
 ```
 
 After this, gr-verilog should be installed as any other GNU Radio out-of-tree module.
