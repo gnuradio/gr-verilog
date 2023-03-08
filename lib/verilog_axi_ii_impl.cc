@@ -143,7 +143,7 @@ namespace gr {
         gr::thread::scoped_lock lock(this->vl_mutex);
 
         this->generate_so();
-      } catch (std::runtime_error) {
+      } catch (std::runtime_error const&) {
         GR_LOG_ERROR(d_logger,
                      boost::format("%s: %s")
                      % this->verilog_module_path.c_str()
@@ -165,7 +165,7 @@ namespace gr {
         gr::thread::scoped_lock lock(this->vl_mutex);
 
         this->load_lib();
-      } catch (std::runtime_error) {
+      } catch (std::runtime_error const&) {
         GR_LOG_ERROR(d_logger,
                      boost::format("%s: %s")
                      % this->verilog_module_path.c_str()
@@ -251,7 +251,7 @@ namespace gr {
         try {
           status_code =
               this->sim(in[input_i], out[output_i], this->main_time);
-        } catch (std::runtime_error) {
+        } catch (std::runtime_error const&) {
           GR_LOG_ERROR(d_logger,
                      boost::format("%s: %s")
                      % this->verilog_module_path.c_str()
@@ -399,11 +399,11 @@ namespace gr {
     }
 
     bool
-    verilog_axi_ii_impl::test_access(const char *filepath, const char *err_msg = "")
+    verilog_axi_ii_impl::test_access(const char *filepath, const char *err_msg)
     {
 
       if ( access(filepath, R_OK) == _EXIT_FAILURE ) {
-        if (err_msg != "") {
+        if (err_msg != NULL) {
           GR_LOG_ERROR(d_logger,
                        boost::format("%s: %s")
                        % filepath
@@ -418,13 +418,13 @@ namespace gr {
     }
 
     bool
-    verilog_axi_ii_impl::check_env(const char *package, const char *err_msg = "")
+    verilog_axi_ii_impl::check_env(const char *package, const char *err_msg)
     {
 
       Shell_cmd bash;
       bash.exec((std::string("which ") + package).c_str());
       if (bash.get_msg(0) == "") {
-        if (err_msg != "") {
+        if (err_msg != NULL) {
           GR_LOG_ERROR(d_logger,
                        boost::format("%s: %s")
                        % package
