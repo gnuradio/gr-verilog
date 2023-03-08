@@ -6,12 +6,12 @@ options:
     cmake_opt: ''
     comment: ''
     copyright: ''
-    description: This is a demo of verilog_axi_ii block
+    description: This is a demo of verilog_axi_ff block
     gen_cmake: 'On'
     gen_linking: dynamic
     generate_options: qt_gui
     hier_block_src_path: '.:'
-    id: verilog_axi_ii_demo
+    id: verilog_axi_ff_demo
     max_nouts: '0'
     output_language: python
     placement: (0,0)
@@ -45,45 +45,30 @@ blocks:
     coordinate: [8, 132]
     rotation: 0
     state: enabled
-- name: analog_fastnoise_source_x_0
-  id: analog_fastnoise_source_x
+- name: analog_sig_source_x_0
+  id: analog_sig_source_x
   parameters:
     affinity: ''
     alias: ''
-    amp: '32'
+    amp: '100'
     comment: ''
+    freq: '1000'
     maxoutbuf: '0'
     minoutbuf: '0'
-    noise_type: analog.GR_GAUSSIAN
-    samples: '8192'
-    seed: '0'
-    type: int
+    offset: '0'
+    phase: '0'
+    samp_rate: samp_rate
+    type: short
+    waveform: analog.GR_COS_WAVE
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [112, 268]
+    coordinate: [152, 256.0]
     rotation: 0
     state: enabled
-- name: blocks_int_to_float_0
-  id: blocks_int_to_float
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    scale: '1'
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [760, 292]
-    rotation: 0
-    state: enabled
-- name: blocks_int_to_float_1
-  id: blocks_int_to_float
+- name: blocks_short_to_float_0
+  id: blocks_short_to_float
   parameters:
     affinity: ''
     alias: ''
@@ -96,9 +81,26 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [760, 428.0]
+    coordinate: [848, 292.0]
     rotation: 0
-    state: enabled
+    state: true
+- name: blocks_short_to_float_0_0
+  id: blocks_short_to_float
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    scale: '1'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [848, 340.0]
+    rotation: 0
+    state: true
 - name: blocks_throttle_0
   id: blocks_throttle
   parameters:
@@ -109,13 +111,13 @@ blocks:
     maxoutbuf: '0'
     minoutbuf: '0'
     samples_per_second: samp_rate
-    type: int
+    type: short
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [328, 292]
+    coordinate: [392, 292]
     rotation: 0
     state: enabled
 - name: qtgui_time_sink_x_0
@@ -150,9 +152,9 @@ blocks:
     entags: 'True'
     grid: 'True'
     gui_hint: ''
-    label1: ''
+    label1: Before Verilog AXI
     label10: ''
-    label2: ''
+    label2: After Verilog AXI
     label3: ''
     label4: ''
     label5: ''
@@ -171,8 +173,8 @@ blocks:
     marker7: '-1'
     marker8: '-1'
     marker9: '-1'
-    name: '"After Verilog AXI"'
-    nconnections: '1'
+    name: '""'
+    nconnections: '2'
     size: '1024'
     srate: samp_rate
     stemplot: 'False'
@@ -205,111 +207,14 @@ blocks:
     width8: '1'
     width9: '1'
     ylabel: Amplitude
-    ymax: '256'
-    ymin: '-256'
+    ymax: '4'
+    ymin: '-4'
     yunit: '""'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [936, 404.0]
-    rotation: 0
-    state: enabled
-- name: qtgui_time_sink_x_1
-  id: qtgui_time_sink_x
-  parameters:
-    affinity: ''
-    alias: ''
-    alpha1: '1.0'
-    alpha10: '1.0'
-    alpha2: '1.0'
-    alpha3: '1.0'
-    alpha4: '1.0'
-    alpha5: '1.0'
-    alpha6: '1.0'
-    alpha7: '1.0'
-    alpha8: '1.0'
-    alpha9: '1.0'
-    autoscale: 'True'
-    axislabels: 'True'
-    color1: blue
-    color10: dark blue
-    color2: red
-    color3: green
-    color4: black
-    color5: cyan
-    color6: magenta
-    color7: yellow
-    color8: dark red
-    color9: dark green
-    comment: ''
-    ctrlpanel: 'False'
-    entags: 'True'
-    grid: 'True'
-    gui_hint: ''
-    label1: ''
-    label10: ''
-    label2: ''
-    label3: ''
-    label4: ''
-    label5: ''
-    label6: ''
-    label7: ''
-    label8: ''
-    label9: ''
-    legend: 'True'
-    marker1: '-1'
-    marker10: '-1'
-    marker2: '-1'
-    marker3: '-1'
-    marker4: '-1'
-    marker5: '-1'
-    marker6: '-1'
-    marker7: '-1'
-    marker8: '-1'
-    marker9: '-1'
-    name: '"Before Verilog AXI"'
-    nconnections: '1'
-    size: '1024'
-    srate: samp_rate
-    stemplot: 'False'
-    style1: '1'
-    style10: '1'
-    style2: '1'
-    style3: '1'
-    style4: '1'
-    style5: '1'
-    style6: '1'
-    style7: '1'
-    style8: '1'
-    style9: '1'
-    tr_chan: '0'
-    tr_delay: '0'
-    tr_level: '0.0'
-    tr_mode: qtgui.TRIG_MODE_FREE
-    tr_slope: qtgui.TRIG_SLOPE_POS
-    tr_tag: '""'
-    type: float
-    update_time: '0.10'
-    width1: '1'
-    width10: '1'
-    width2: '1'
-    width3: '1'
-    width4: '1'
-    width5: '1'
-    width6: '1'
-    width7: '1'
-    width8: '1'
-    width9: '1'
-    ylabel: Amplitude
-    ymax: '256'
-    ymin: '-256'
-    yunit: '""'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [936, 268]
+    coordinate: [1040, 300.0]
     rotation: 0
     state: enabled
 - name: verilog_axi_xx_0
@@ -325,23 +230,23 @@ blocks:
     module_flag: '0'
     overwrite: 'True'
     skip_output_items: '0'
-    type: int
+    type: short
     verilator_options: ''
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [528, 392.0]
+    coordinate: [584, 444]
     rotation: 0
     state: enabled
 
 connections:
-- [analog_fastnoise_source_x_0, '0', blocks_throttle_0, '0']
-- [blocks_int_to_float_0, '0', qtgui_time_sink_x_1, '0']
-- [blocks_int_to_float_1, '0', qtgui_time_sink_x_0, '0']
-- [blocks_throttle_0, '0', blocks_int_to_float_0, '0']
+- [analog_sig_source_x_0, '0', blocks_throttle_0, '0']
+- [blocks_short_to_float_0, '0', qtgui_time_sink_x_0, '0']
+- [blocks_short_to_float_0_0, '0', qtgui_time_sink_x_0, '1']
+- [blocks_throttle_0, '0', blocks_short_to_float_0, '0']
 - [blocks_throttle_0, '0', verilog_axi_xx_0, '0']
-- [verilog_axi_xx_0, '0', blocks_int_to_float_1, '0']
+- [verilog_axi_xx_0, '0', blocks_short_to_float_0_0, '0']
 
 metadata:
   file_format: 1
