@@ -30,6 +30,7 @@ include(GrPybind)
 
 list(APPEND verilog_python_files
     verilog_axi_bb_python.cc
+    verilog_axi_ss_python.cc
     verilog_axi_ii_python.cc
     verilog_axi_ff_python.cc
     python_bindings.cc)

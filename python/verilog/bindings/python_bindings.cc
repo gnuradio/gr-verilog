@@ -22,6 +22,7 @@ namespace py = pybind11;
 /**************************************/
 // BINDING_FUNCTION_PROTOTYPES(
     void bind_verilog_axi_bb(py::module& m);
+    void bind_verilog_axi_ss(py::module& m);
     void bind_verilog_axi_ii(py::module& m);
     void bind_verilog_axi_ff(py::module& m);
 // ) END BINDING_FUNCTION_PROTOTYPES
@@ -53,6 +54,7 @@ PYBIND11_MODULE(verilog_python, m)
     /**************************************/
     // BINDING_FUNCTION_CALLS(
     bind_verilog_axi_bb(m);
+    bind_verilog_axi_ss(m);
     bind_verilog_axi_ii(m);
     bind_verilog_axi_ff(m);
     // ) END BINDING_FUNCTION_CALLS
