@@ -39,5 +39,7 @@ add_custom_target(
   COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}
           ${CMAKE_BINARY_DIR}/test_modules/gnuradio/verilog/
 )
+
+GR_ADD_TEST(qa_verilog_axi_bb ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_verilog_axi_bb.py)
 GR_ADD_TEST(qa_verilog_axi_ii ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_verilog_axi_ii.py)
 GR_ADD_TEST(qa_verilog_axi_ff ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_verilog_axi_ff.py)
