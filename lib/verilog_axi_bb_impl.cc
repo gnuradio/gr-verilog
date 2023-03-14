@@ -244,8 +244,8 @@ namespace gr {
 
 
       // Do <+signal processing+>
-      unsigned int input_i;
-      unsigned int output_i;
+      int input_i;
+      int output_i;
       for (input_i = 0, output_i = 0; output_i < noutput_items && input_i < ninput_items[0];)
       {
         unsigned char status_code;
