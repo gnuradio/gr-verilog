@@ -2,3 +2,6 @@
 build/
 *.pyc
 obj_dir
+examples/*/axi_module*
+python/verilog/testcases/*/axi_module*
+apps/*.py
