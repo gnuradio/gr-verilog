@@ -3,7 +3,7 @@ label: Verilog_AXI
 category: '[GrVerilog]'
 
 templates:
-  imports: import verilog
+  imports: from gnuradio import verilog
   make: verilog.verilog_axi_${type.fcn}(${file}, ${overwrite}, ${IO_ratio}, ${verilator_options}, ${module_flag}, ${skip_output_items})
 
 

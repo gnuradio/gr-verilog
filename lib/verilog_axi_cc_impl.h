@@ -21,10 +21,10 @@
 #ifndef INCLUDED_VERILOG_VERILOG_AXI_CC_IMPL_H
 #define INCLUDED_VERILOG_VERILOG_AXI_CC_IMPL_H
 
-#include <verilog/verilog_axi_cc.h>
+#include <gnuradio/verilog/verilog_axi_cc.h>
 #include <string>
 
-#include "verilog/Shared_lib.h"
+#include "gnuradio/verilog/Shared_lib.h"
 
 #define SLASH "/"
 

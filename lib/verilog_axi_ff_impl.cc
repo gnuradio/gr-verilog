@@ -30,10 +30,10 @@
 #include <cmath>
 
 
-#include "verilog/constants.h"
+#include "gnuradio/verilog/constants.h"
 
-#include "verilog/Shell_cmd.h"
-#include "verilog/Shared_lib.h"
+#include "gnuradio/verilog/Shell_cmd.h"
+#include "gnuradio/verilog/Shared_lib.h"
 
 #define AXI_MODULE_CL_MAKEFILE "axi_module_cl.mk"
 #define CPP_TEMPLATE_NAME "axi_module.cpp"
@@ -143,7 +143,7 @@ namespace gr {
         gr::thread::scoped_lock lock(this->vl_mutex);
 
         this->generate_so();
-      } catch (std::runtime_error) {
+      } catch (std::runtime_error const&) {
         GR_LOG_ERROR(d_logger,
                      boost::format("%s: %s")
                      % this->verilog_module_path.c_str()
@@ -165,7 +165,7 @@ namespace gr {
         gr::thread::scoped_lock lock(this->vl_mutex);
 
         this->load_lib();
-      } catch (std::runtime_error) {
+      } catch (std::runtime_error const&) {
         GR_LOG_ERROR(d_logger,
                      boost::format("%s: %s")
                      % this->verilog_module_path.c_str()
@@ -242,8 +242,8 @@ namespace gr {
 
 
       // Do <+signal processing+>
-      unsigned int input_i;
-      unsigned int output_i;
+      int input_i;
+      int output_i;
       for (input_i = 0, output_i = 0; output_i < noutput_items && input_i < ninput_items[0];)
       {
         unsigned char status_code;
@@ -251,7 +251,7 @@ namespace gr {
         try {
           status_code =
               this->sim(in[input_i], out[output_i], this->main_time);
-        } catch (std::runtime_error) {
+        } catch (std::runtime_error const&) {
           GR_LOG_ERROR(d_logger,
                      boost::format("%s: %s")
                      % this->verilog_module_path.c_str()
@@ -399,11 +399,11 @@ namespace gr {
     }
 
     bool
-    verilog_axi_ff_impl::test_access(const char *filepath, const char *err_msg = "")
+    verilog_axi_ff_impl::test_access(const char *filepath, const char *err_msg)
     {
 
       if ( access(filepath, R_OK) == _EXIT_FAILURE ) {
-        if (err_msg != "") {
+        if (err_msg != NULL) {
           GR_LOG_ERROR(d_logger,
                        boost::format("%s: %s")
                        % filepath
@@ -418,13 +418,13 @@ namespace gr {
     }
 
     bool
-    verilog_axi_ff_impl::check_env(const char *package, const char *err_msg = "")
+    verilog_axi_ff_impl::check_env(const char *package, const char *err_msg)
     {
 
       Shell_cmd bash;
       bash.exec((std::string("which ") + package).c_str());
       if (bash.get_msg(0) == "") {
-        if (err_msg != "") {
+        if (err_msg != NULL) {
           GR_LOG_ERROR(d_logger,
                        boost::format("%s: %s")
                        % package
